@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <header>
+        <div class="header-left">
+            <div class="menu-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">StudyTracker <i class="fas fa-graduation-cap"></i></div>
+        </div>
+
+        <div class="header-right">
+            <button id="prayer-icon-btn" class="icon-btn" onclick="openPrayerModal()">
+                <i class="fas fa-mosque"></i>
+                <div id="ramadan-badge" class="ramadan-badge"><i class="fas fa-star"></i></div>
+            </button>
+
+            <button id="profile-icon-btn" class="icon-btn" onclick="openProfileModal()">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="prayer-modal" class="modal-overlay">
+        <div class="modal-box">
+            <i class="fas fa-times close-modal" onclick="closePrayerModal()"></i>
+            <div class="modal-header">
+                <h3>Daily Spiritual Log</h3>
+            </div>
+            
+            <div class="prayer-list">
+                <div class="prayer-item">
+                    <label for="fajr">Fajr</label>
+                    <input type="checkbox" id="fajr" class="prayer-checkbox">
+                </div>
+                <div class="prayer-item">
+                    <label for="dhuhr">Dhuhr</label>
+                    <input type="checkbox" id="dhuhr" class="prayer-checkbox">
+                </div>
+                <div class="prayer-item">
+                    <label for="asr">Asr</label>
+                    <input type="checkbox" id="asr" class="prayer-checkbox">
+                </div>
+                <div class="prayer-item">
+                    <label for="maghrib">Maghrib</label>
+                    <input type="checkbox" id="maghrib" class="prayer-checkbox">
+                </div>
+                <div class="prayer-item">
+                    <label for="isha">Isha</label>
+                    <input type="checkbox" id="isha" class="prayer-checkbox">
+                </div>
+            </div>
+
+            <div id="fasting-section" class="fasting-section">
+                <div class="fasting-toggle">
+                    <label for="fasting-toggle"><i class="fas fa-moon" style="color:#bfa35f"></i> Fasting Today?</label>
+                    <input type="checkbox" id="fasting-toggle" class="prayer-checkbox">
+                </div>
+            </div>
+
+            <button class="save-btn" onclick="savePrayers()">Save Record</button>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="modal-overlay">
+        <div class="modal-box">
+            <i class="fas fa-times close-modal" onclick="closeProfileModal()"></i>
+            <div class="modal-header">
+                <h3>My Profile</h3>
+                <p style="font-size:12px; color:#666;">This name will appear on the Leaderboard.</p>
+            </div>
+            <br>
+            <input type="text" id="username-input" class="profile-input" placeholder="Enter your name...">
+            <button class="save-btn" onclick="saveProfile()">Save Profile</button>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a>
+        <a href="ongoing.html"><i class="fas fa-spinner"></i> Ongoing Target</a>
+        <a href="upcoming.html"><i class="fas fa-calendar-check"></i> Upcoming Target</a>
+        <a href="leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+        <a href="analytics.html"><i class="fas fa-chart-line"></i> Points Analytics</a>
+        <a href="spiritual.html"><i class="fas fa-moon"></i> Spiritual Insights</a>
+        
+        <div class="sidebar-footer">
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="dashboard-container">
+            
+            <div id="phase-card-container">
+                </div>
+
+            <h3 style="margin-bottom: 15px; color:#444;">Active Targets</h3>
+            <div id="targets-grid-container" class="targets-grid">
+                </div>
+
+            <div class="dashboard-grid">
+               <div class="smart-engine-section">
+                <div class="planner-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="fas fa-tasks" style="font-size:24px; color:var(--secondary-color);"></i>
+                        <div>
+                            <h3 style="margin:0;">Today's Focus</h3>
+                            <span id="daily-points-summary" style="font-size:12px; color:#666;">0 / 0 Points Planned</span>
+                        </div>
+                    </div>
+                    
+                    <div class="planner-actions">
+                        <button class="btn-secondary" onclick="openSyllabusModal()" style="padding:8px 15px; font-size:12px; border-radius:20px; border:1px solid #ddd; background:white; cursor:pointer;">
+                            <i class="fas fa-plus"></i> Add Manual
+                        </button>
+                        <button class="btn-primary" onclick="triggerSmartFill()" style="padding:8px 15px; font-size:12px; border-radius:20px; border:none; background:var(--secondary-color); color:white; cursor:pointer; margin-left:10px;">
+                            <i class="fas fa-magic"></i> Smart Fill
+                        </button>
+                    </div>
+                </div>
+
+                <ul id="smart-focus-list" class="milestone-list">
+                    </ul>
+            </div>
+
+            <div id="syllabus-modal" class="modal-overlay">
+                <div class="modal-box" style="width: 500px; max-height: 80vh; overflow-y: auto;">
+                    <div class="modal-header">
+                        <h3>Select Topics to Add</h3>
+                        <i class="fas fa-times close-modal" onclick="closeSyllabusModal()"></i>
+                    </div>
+                    <div id="syllabus-list-container" style="text-align:left; margin-top:15px;">
+                        </div>
+                </div>
+            </div> 
+
+
+            </div>
+
+        </div>
+    </div>
+
+<script src="global.js"></script>
+    
+    <script src="syllabus-details.js"></script>
+    
+    <script src="analytics.js"></script>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>    
+</body>
+</html>

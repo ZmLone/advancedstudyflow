@@ -1,0 +1,177 @@
+/* --- dashboard.css (Modern & Glossy) --- */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* 1. LIQUID PHASE CARD */
+.phase-card {
+    background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    padding: 35px;
+    border-radius: 25px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(102, 166, 255, 0.4);
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 40px;
+}
+
+/* The "Glitter" / Shine Effect */
+.phase-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+    transform: rotate(30deg);
+    animation: shine 8s infinite linear;
+}
+
+@keyframes shine {
+    from { transform: rotate(30deg) translate(-20%, -20%); }
+    to { transform: rotate(30deg) translate(20%, 20%); }
+}
+
+.phase-header { position: relative; z-index: 2; display: flex; justify-content: space-between; }
+.phase-title h2 { font-size: 28px; font-weight: 700; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.phase-title span { text-transform: uppercase; letter-spacing: 2px; font-size: 12px; opacity: 0.9; }
+
+/* Modern Progress Bar */
+.phase-progress-container {
+    background: rgba(0,0,0,0.15);
+    height: 12px;
+    border-radius: 10px;
+    margin: 25px 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.phase-progress-bar {
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
+    border-radius: 10px;
+    position: relative;
+    transition: width 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.phase-stats { display: flex; gap: 40px; position: relative; z-index: 2; }
+.p-stat h3 { font-size: 26px; font-weight: 700; }
+
+/* 2. TARGET CARDS (Glassmorphism) */
+.targets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.target-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.4s ease;
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Lift Effect */
+.target-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(31, 38, 135, 0.2);
+    border-color: white;
+}
+
+/* Dynamic Borders */
+.border-physics { border-top: 5px solid #4facfe; }
+.border-chemistry { border-top: 5px solid #ff9a9e; }
+.border-biology { border-top: 5px solid #43e97b; }
+
+.t-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; }
+.t-title h4 { font-size: 18px; color: var(--text-dark); margin-bottom: 5px; }
+
+/* Status Badges */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.status-track { background: rgba(37, 117, 252, 0.1); color: var(--secondary-color); }
+.status-lag { background: rgba(255, 71, 87, 0.1); color: #ff4757; }
+.status-ahead { background: rgba(46, 213, 115, 0.1); color: #2ed573; }
+
+/* Reactive Progress Bar */
+.t-progress-bg {
+    height: 8px;
+    background: #edf2f7;
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.t-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--secondary-color), #a18cd1);
+    position: relative;
+}
+
+/* Animated Striped Pattern for Progress */
+.t-progress-fill::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-image: linear-gradient(
+        -45deg, 
+        rgba(255, 255, 255, .2) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, .2) 50%, 
+        rgba(255, 255, 255, .2) 75%, 
+        transparent 75%, 
+        transparent
+    );
+    background-size: 20px 20px;
+    animation: moveStripes 2s linear infinite;
+}
+
+@keyframes moveStripes {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
+
+/* 3. SMART FOCUS (Modern List) */
+.smart-engine-section {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--glass-shadow);
+    width: 100%;
+}
+
+.milestone-list li {
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    margin-bottom: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.milestone-list li:hover {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transform: translateX(5px);
+    border-left: 3px solid var(--secondary-color);
+}

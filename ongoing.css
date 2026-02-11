@@ -1,0 +1,90 @@
+/* --- ongoing.css (Interactive & Clean) --- */
+
+.ongoing-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Header Text */
+.header-section h2 {
+    font-size: 32px;
+    background: linear-gradient(45deg, #2d3436, #636e72);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Sub-topic Container */
+.dt-block {
+    background: white;
+    border-radius: 16px;
+    padding: 0; /* Removing padding for edge-to-edge feel */
+    margin-bottom: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.dt-block:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dt-header {
+    background: #f9fafb;
+    padding: 15px 25px;
+    font-weight: 600;
+    color: var(--text-dark);
+    border-bottom: 1px solid #eee;
+}
+
+/* Rows with Hover Glow */
+.subtopic-row {
+    padding: 15px 25px;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+    cursor: default;
+}
+
+.subtopic-row:hover {
+    background: linear-gradient(90deg, rgba(37, 117, 252, 0.05) 0%, transparent 100%);
+    padding-left: 30px; /* Slide effect */
+}
+
+/* Modern Action Buttons */
+.add-btn, .remove-btn {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.add-btn {
+    background: white;
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+.add-btn:hover {
+    background: #2ecc71;
+    color: white;
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+}
+
+.remove-btn {
+    background: #ff7675;
+    color: white;
+    border: none;
+}
+
+.remove-btn:hover {
+    background: #d63031;
+    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.4);
+}

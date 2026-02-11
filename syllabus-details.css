@@ -1,0 +1,121 @@
+/* --- syllabus-details.css --- */
+.syllabus-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+/* Subject Wrapper */
+.subject-group {
+    margin-bottom: 40px;
+}
+
+.subject-title {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-left: 5px solid var(--secondary-color);
+    padding-left: 15px;
+    font-weight: 700;
+}
+
+/* Accordion Style (The Screenshot Look) */
+.chapter-accordion {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.accordion-header {
+    background-color: #1e293b; /* Dark slate blue from screenshot */
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: #334155;
+}
+
+.accordion-header h4 {
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+}
+
+.accordion-icon {
+    transition: transform 0.3s;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+/* Content inside the Accordion */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+}
+
+/* The Daily Test List Items */
+.dt-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dt-item:last-child {
+    border-bottom: none;
+}
+
+.dt-name {
+    font-weight: 600;
+    color: #475569;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.dt-topics {
+    font-size: 13px;
+    color: #64748b;
+    margin-left: 10px;
+    line-height: 1.5;
+}
+
+.dt-topics::before {
+    content: "• ";
+    color: var(--primary-color);
+}
